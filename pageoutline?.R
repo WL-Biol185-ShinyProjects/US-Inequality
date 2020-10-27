@@ -6,6 +6,7 @@ library(shinyWidgets)
 # Define UI ----
 ui <- fluidPage(
   
+  
 setBackgroundColor (
     color = c("#F8F8FF", "#CFEEFA"),
     gradient = "linear",
@@ -32,7 +33,8 @@ ui <- navbarPage("Inequality Navigation Bar",
                             p("- Economic disparity over time between whites and blacks in the United States." 
                             ),
                             p("- Life Expectancy by counties in the United States."),
-                            p("- Data clean up for future researchers to be able to use readily.")
+                            p("- Data clean up for future researchers to be able to use readily."),
+                              img(src = "ineqpic.png", height = 480, width = 720, align = "center")
                           )
     ),
     tabPanel("Life Expectancy Disparity by Race"),
@@ -52,23 +54,23 @@ ui <- navbarPage("Inequality Navigation Bar",
              p("The data for this project was not as easy to collect as we originally thought. The data was also not as clean
                as it could have been, expecially datasets from the CDC. As a result, we decided to clean the data as best as possible
                and post it here so that future studies may be able to have the data readily available."),
-             h4("Download County-level Poverty Data"),
+             h4("Download County-level Life Expectancy Data"),
              downloadBttn(
-               outputId = "downloadData",
+               outputId = "downloadData1",
                style = "pill",
                color = "primary",
                size = "sm"
              ),
              h4("Download Life Expectancy by Race Data"),
              downloadBttn(
-               outputId = "downloadData",
+               outputId = "downloadData2",
                style = "pill",
                color = "primary",
                size = "sm"
              ),
              h4("Download Income Inequality by Race Data"),
              downloadBttn(
-               outputId = "downloadData",
+               outputId = "downloadData3",
                style = "pill",
                color = "primary",
                size = "sm"
@@ -82,8 +84,20 @@ ui <- navbarPage("Inequality Navigation Bar",
 
 # Define server logic ----
 server <- function(input, output) {
+  # County Life Expectancy Data
+  CountyLevelLE <- health_ineq_online_table_11
   
-}
+  output$downloadData1 <- downloadHandler(
+    filename = function() {
+      paste("CountyLevelLE-", Sys.Date(), ".csv", sep = "")
+    },
+    content = function(file) {
+      write.csv(CountyLevelLE, file)
+    }
+  )
+  # Life Expectancy by Race Data
+  # Income Disparity by Race Data
+    }
 
 # Run the app ----
 shinyApp(ui = ui, server = server)
