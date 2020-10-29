@@ -34,7 +34,6 @@ ui <- navbarPage("Inequality Navigation Bar",
                             ),
                             p("- Life Expectancy by counties in the United States."),
                             p("- Data clean up for future researchers to be able to use readily."),
-                              img(src = "ineqpic.png", height = 480, width = 720, align = "center")
                           )
     ),
     tabPanel("Life Expectancy Disparity by Race"),
