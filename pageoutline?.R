@@ -33,7 +33,7 @@ ui <- navbarPage("Inequality Navigation Bar",
                             p("- Economic disparity over time between whites and blacks in the United States." 
                             ),
                             p("- Life Expectancy by counties in the United States."),
-                            p("- Data clean up for future researchers to be able to use readily."),
+                            p("- Data clean up for future researchers to be able to use readily.")
                           )
     ),
     tabPanel("Life Expectancy Disparity by Race"),
@@ -51,8 +51,8 @@ ui <- navbarPage("Inequality Navigation Bar",
                such as Hispanics and Asians,  or compare other areas of inequality."),
              br(),
              p("The data for this project was not as easy to collect as we originally thought. The data was also not as clean
-               as it could have been, expecially datasets from the CDC. As a result, we decided to clean the data as best as possible
-               and post it here so that future studies may be able to have the data readily available."),
+               as it could have been, expecially datasets from the Census. As a result, we decided to clean the data as best as possible
+               and post it here so that future studies may be able to have the data readily available. These datasets will become available "),
              h4("Download County-level Life Expectancy Data"),
              downloadBttn(
                outputId = "downloadData1",
@@ -67,13 +67,20 @@ ui <- navbarPage("Inequality Navigation Bar",
                color = "primary",
                size = "sm"
              ),
-             h4("Download Income Inequality by Race Data"),
+             h4("Download Income Inequality by Race Data - White"),
              downloadBttn(
                outputId = "downloadData3",
                style = "pill",
                color = "primary",
                size = "sm"
-             )
+             ),
+             h4("Download Income Inequality by Race Data - Black"),
+             downloadBttn(
+               outputId = "downloadData4",
+               style = "pill",
+               color = "primary",
+               size = "sm"
+             ) 
     )
   )
 )
@@ -83,6 +90,7 @@ ui <- navbarPage("Inequality Navigation Bar",
 
 # Define server logic ----
 server <- function(input, output) {
+  
   # County Life Expectancy Data
   CountyLevelLE <- health_ineq_online_table_11
   
@@ -94,9 +102,23 @@ server <- function(input, output) {
       write.csv(CountyLevelLE, file)
     }
   )
-  # Life Expectancy by Race Data
-  # Income Disparity by Race Data
+  
+  # Life Expectancy at Birth by Race Data; NCHS
+  RaceLE_NCHSdata <- NCHS_._Death_rates_and_life_expectancy_at_birth
+  
+  output$downloadData2 <- downloadHandler(
+    filename = function() {
+      paste("RaceLE_NCHSdata-", Sys.Date(), ".csv", sep = "")
+    },
+    content = function(file) {
+      write.csv(RaceLE_NCHSdata, file)
     }
+  )
+  
+  # Income Disparity by Race Data; census-clean
+  # We will give black and white data as two seperate download buttons
+  
+   }
 
 # Run the app ----
 shinyApp(ui = ui, server = server)
