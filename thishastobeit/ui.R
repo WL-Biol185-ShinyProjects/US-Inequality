@@ -6,7 +6,7 @@ fluidPage(
     direction = "bottom"
   ),
   
-  
+ 
   ui <- navbarPage("Inequality Navigation Bar",
                    tabPanel("Home", 
                             titlePanel("Income & Health Inequality in America"),
