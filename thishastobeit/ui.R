@@ -1,4 +1,5 @@
 library(shiny)
+library(shinyWidgets)
 fluidPage(
   setBackgroundColor (
     color = c("#F8F8FF", "#CFEEFA"),
@@ -30,7 +31,10 @@ fluidPage(
                             )
                    ),
                    tabPanel("Life Expectancy Disparity by Race"),
-                   tabPanel("Life Expectancy by Counties"),
+                   tabPanel("Life Expectancy by Counties",
+                            leafletOutput("LECountyandIncomePercentile"),
+                            selectInput("CountyChoices", "Select County Dataset", choices = c("Q1", "Q2", "Q3"))
+                            ),
                    tabPanel("Income Disparity by Race"),
                    tabPanel("Data & Acknowlegments",
                             h2("Acknowledgments"),
