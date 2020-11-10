@@ -1,4 +1,5 @@
 library(shiny)
+library(shinyWidgets)
 function(input, output) {
   
   #code for LE by county data; this will be leaflets and drop down selector
