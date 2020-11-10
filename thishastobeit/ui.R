@@ -3,8 +3,12 @@ library(shiny)
 library(shinyWidgets)
 =======
 library(tidyverse)
+<<<<<<< HEAD
 library(ggplot2)
 >>>>>>> 12fa97bc04b535aa705c804e574423205e8032b2
+=======
+library(shinyWidgets)
+>>>>>>> a2aa7facec4b902ce951f7f1103f4333b89804fa
 fluidPage(
   setBackgroundColor (
     color = c("#F8F8FF", "#CFEEFA"),
@@ -48,19 +52,20 @@ fluidPage(
                                  label = "Year",
                                  min = 1900,
                                  max = 2019,
+                                 value = 1950,
                                  animate = animationOptions(interval = 1000, loop = FALSE)
                      ),
                      
                      selectInput(inputId = "Sex",
                                  label = "Select Sex",
                                  multiple = TRUE,
-                                 choices = unique(NCHS_._Death_rates_and_life_expectancy_at_birth$Sex),
+                                 choices = unique(NCHS_Death_rates_and_life_expectancy_at_birth$Sex),
                                  selected = "Both Sexes"),
                      
                      selectInput(inputId = "Race",
                                  label = "Select Race",
                                  multiple = TRUE,
-                                 choices = unique(NCHS_._Death_rates_and_life_expectancy_at_birth$Race),
+                                 choices = unique(NCHS_Death_rates_and_life_expectancy_at_birth$Race),
                                  selected = "All Races")
                      
                      

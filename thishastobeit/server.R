@@ -1,6 +1,7 @@
 library(shiny)
 library(tidyverse)
 library(ggplot2)
+library(dplyr)
 function(input, output) {
   
   #code for timelapse of income inequality among blacks and whites
@@ -40,11 +41,11 @@ function(input, output) {
   
   
 }
-)
+
   
   #code for life expectancy
-  NCHS_._Death_rates_and_life_expectancy_at_birth <- read.csv("~/desktop/class-demo-project/NCHS_-_Death_rates_and_life_expectancy_at_birth.csv")
-  Year<- NCHS_._Death_rates_and_life_expectancy_at_birth
+  NCHS_Death_rates_and_life_expectancy_at_birth <- read.csv("NCHS_Death_rates_and_life_expectancy_at_birth.csv")
+  Year<- NCHS_Death_rates_and_life_expectancy_at_birth
   
   output$LifeExpectancy<- renderPlot({
     NCHS_Death_rates_and_life_expectancy_at_birth %>%
@@ -58,11 +59,11 @@ function(input, output) {
   
   output$LifeExpectancyInfo <-renderDataTable({
     clickEvent<- input$LifeExpectancyPlotClick
-    NCHS_._Death_rates_and_life_expectancy_at_birth %>%
+    NCHS_Death_rates_and_life_expectancy_at_birth %>%
       nearPoints(clickEvent)
   })
   
-}
+
   # County Life Expectancy Data
   CountyLevelLE <- health_ineq_online_table_11
   
@@ -113,4 +114,3 @@ function(input, output) {
     }
   )
   
-}

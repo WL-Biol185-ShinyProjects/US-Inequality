@@ -29,7 +29,7 @@ function(input, output) {
         )
 
     } 
-      else if (input$cloroplethSelector == "Q2") {
+      else if (input$CountyChoices == "Q2") {
       #code to make map 2
       geo <- readOGR("counties.json")
       
