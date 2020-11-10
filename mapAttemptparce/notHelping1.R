@@ -8,12 +8,11 @@ geo@data <- healthData1
 bins <- c(77, 79, 81, 83, 85, 87, 89, Inf)
 pal <- colorBin("YlOrRd", domain = healthTable1, bins = bins)
 
-
 leaflet(geo) %>%
   setView(-96, 37.8, 4) %>% 
-  addPolygons(fillColor = ~pal(health_ineq_online_table_11$le_agg_q4_M), weight = 2, opacity = "white", dashArray = "3", fillOpacity = 0.7) %>% 
+  addPolygons(fillColor = ~pal(health_ineq_online_table_11$le_agg_q1_M), weight = 2, opacity = "white", dashArray = "3", fillOpacity = 0.7) %>%
   addLegend("bottomright", pal = pal, values = ~bins,
-          title = "LE by County",
-          labFormat = labelFormat(prefix = "Years: "),
-          opacity = 1
-)
+            title = "LE by County",
+            labFormat = labelFormat(prefix = "Years: "),
+            opacity = 1
+  )
