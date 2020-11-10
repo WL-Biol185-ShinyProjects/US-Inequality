@@ -4,7 +4,8 @@ function(input, output) {
   
   #code for LE by county data; this will be leaflets and drop down selector
   
-  output$LECountyandIncomePercentile<- renderLeaflet({
+  output$LECountyandIncomePercentile<- renderLeaflet(
+    {
     
     if (input$CountyChoices == "Q1") {
       # code to make map #1
@@ -27,7 +28,8 @@ function(input, output) {
                   opacity = 1
         )
 
-    } else if (input$cloroplethSelector == "Q2") {
+    } 
+      else if (input$cloroplethSelector == "Q2") {
       #code to make map 2
       geo <- readOGR("counties.json")
       
@@ -48,7 +50,8 @@ function(input, output) {
                   opacity = 1
         )
       
-    } else {
+    } 
+      else {
       #code to make map 3
       geo <- readOGR("counties.json")
       
@@ -71,8 +74,8 @@ function(input, output) {
         )
     }
     
-  })
-  
+  }
+  )
   
   #code for timelapse of income inequality among blacks and whites
   
