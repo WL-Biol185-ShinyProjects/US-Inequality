@@ -9,10 +9,11 @@ function(input, output){
 
 
   output$LifeExpectancy<- renderPlot({
-      NCHS_._Death_rates_and_life_expectancy_at_birth %>%
+      NCHS_Death_rates_and_life_expectancy_at_birth %>%
       filter(Race == input$Race, Sex == input$Sex) %>%
-      ggplot(aes(Race, Average.Life.Expectancy..Years., shape= Race, colour= Sex))+
-      geom_point()
+      ggplot(aes(Race, `Average Life Expectancy (Years)`, colour= Sex))+
+      geom_bar(stat = "identity") +
+      theme(axis.text.x = element_text(angle = 60, hjust = 1))
    
 })
 
