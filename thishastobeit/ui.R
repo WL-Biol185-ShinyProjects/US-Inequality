@@ -1,4 +1,6 @@
 library(shiny)
+library(tidyverse)
+library(ggplot2)
 fluidPage(
   setBackgroundColor (
     color = c("#F8F8FF", "#CFEEFA"),
@@ -30,8 +32,56 @@ fluidPage(
                             )
                    ),
                    tabPanel("Life Expectancy Disparity by Race"),
+                            titlePanel("Life Expectancy dispparities between White and Black Americans"),
+                   sidebarPanel(
+                     sliderInput(inputId ="Year",
+                                 label = "Year",
+                                 min = 1900,
+                                 max = 2019,
+                                 animate = animationOptions(interval = 1000, loop = FALSE)
+                     ),
+                     
+                     selectInput(inputId = "Sex",
+                                 label = "Select Sex",
+                                 multiple = TRUE,
+                                 choices = unique(NCHS_._Death_rates_and_life_expectancy_at_birth$Sex),
+                                 selected = "Both Sexes"),
+                     
+                     selectInput(inputId = "Race",
+                                 label = "Select Race",
+                                 multiple = TRUE,
+                                 choices = unique(NCHS_._Death_rates_and_life_expectancy_at_birth$Race),
+                                 selected = "All Races")
+                     
+                     
+                   ),
+                   mainPanel(
+                     plotOutput("LifeExpectancy",
+                                click = "LifeExpectancyPlotClick")
+                   ),
+                   dataTableOutput("LifeExpectancyInfo"),
+                   
+                   
                    tabPanel("Life Expectancy by Counties"),
+                   
+                   
                    tabPanel("Income Disparity by Race"),
+                   
+                   sidebarPanel(
+                     sliderInput(inputId ="Year" ,
+                                 label = "Year" ,
+                                 min = 1980 ,
+                                 max = 2019,
+                                 value = 1980,
+                                 animate = animationOptions(interval = 1000, loop = FALSE)),
+                     
+                     
+                     mainPanel(
+                       plotOutput("incomeplot"),
+                       plotOutput("blackincome"),
+                       plotOutput("whiteincome")
+                     ),
+                   
                    tabPanel("Data & Acknowlegments",
                             h2("Acknowledgments"),
                             p("We would first like to thank Dr. Gregg Whitworth for assisting us with this project. He helped
@@ -76,4 +126,5 @@ fluidPage(
                             ) 
                    )
   )
+)
 )
