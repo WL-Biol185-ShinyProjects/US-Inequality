@@ -1,14 +1,15 @@
 library(shiny)
-<<<<<<< HEAD
+
 library(shinyWidgets)
-=======
+
 library(tidyverse)
-<<<<<<< HEAD
+        
 library(ggplot2)
->>>>>>> 12fa97bc04b535aa705c804e574423205e8032b2
-=======
+
 library(shinyWidgets)
->>>>>>> a2aa7facec4b902ce951f7f1103f4333b89804fa
+
+library(leaflet)
+
 fluidPage(
   setBackgroundColor (
     color = c("#F8F8FF", "#CFEEFA"),
@@ -40,12 +41,12 @@ fluidPage(
                             )
                    ),
                    tabPanel("Life Expectancy Disparity by Race"),
-<<<<<<< HEAD
+
                    tabPanel("Life Expectancy by Counties",
                             leafletOutput("LECountyandIncomePercentile"),
                             selectInput("CountyChoices", "Select County Dataset", choices = c("Q1", "Q2", "Q3"))
                             ),
-=======
+
                             titlePanel("Life Expectancy dispparities between White and Black Americans"),
                    sidebarPanel(
                      sliderInput(inputId ="Year",
@@ -80,7 +81,6 @@ fluidPage(
                    tabPanel("Life Expectancy by Counties"),
                    
                    
->>>>>>> 12fa97bc04b535aa705c804e574423205e8032b2
                    tabPanel("Income Disparity by Race"),
                    
                    sidebarPanel(
