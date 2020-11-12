@@ -10,7 +10,9 @@ library(shinyWidgets)
 
 library(leaflet)
 
- #code is not looking hot. it's flatlining.
+library(rgdal)
+
+
 
 fluidPage(
   setBackgroundColor (
@@ -79,8 +81,6 @@ fluidPage(
                             leafletOutput("LECountyandIncomePercentile"),
                             selectInput("CountyChoices", "Select County Dataset", choices = c("Q1", "Q2", "Q3"))
                             ),
-
-                   tabPanel("Life Expectancy dispparities between White and Black Americans"),
              
                    tabPanel("Income Disparity by Race",
                    sidebarPanel(
@@ -98,6 +98,7 @@ fluidPage(
                        plotOutput("whiteincome")
                      )
                      ),
+                   
                    
                    tabPanel("Data & Acknowlegments",
                             h2("Acknowledgments"),
