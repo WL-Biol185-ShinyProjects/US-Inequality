@@ -10,6 +10,8 @@ library(shinyWidgets)
 
 library(leaflet)
 
+ #code is not looking hot. it's flatlining.
+
 fluidPage(
   setBackgroundColor (
     color = c("#F8F8FF", "#CFEEFA"),
@@ -78,14 +80,9 @@ fluidPage(
                             selectInput("CountyChoices", "Select County Dataset", choices = c("Q1", "Q2", "Q3"))
                             ),
 
-                            titlePanel("Life Expectancy dispparities between White and Black Americans"),
-                   
-                   
-                   tabPanel("Life Expectancy by Counties"),
-                   
-                   
+                   tabPanel("Life Expectancy dispparities between White and Black Americans"),
+             
                    tabPanel("Income Disparity by Race",
-                   
                    sidebarPanel(
                      sliderInput(inputId ="Year" ,
                                  label = "Year" ,
