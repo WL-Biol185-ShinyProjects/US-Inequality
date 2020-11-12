@@ -55,13 +55,20 @@ fluidPage(
                                  label = "Select Sex",
                                  multiple = TRUE,
                                  choices = unique(NCHS_Death_rates_and_life_expectancy_at_birth$Sex),
-                                 selected = "Both Sexes")
+                                 selected = "Both Sexes"),
+                     
+                     selectInput(inputId = "Race",
+                                 label = "Select Race",
+                                 multiple = TRUE,
+                                 choices = unique(NCHS_Death_rates_and_life_expectancy_at_birth$Race),
+                                 selected = "All Races")
                      
                      
                    ),
                    mainPanel(
-                     plotOutput("LifeExpectancy",
-                                click = "LifeExpectancyPlotClick")
+                     plotOutput("LifeExpectancy"),
+                     plotOutput("LifeExpectancypoint",
+                                click = "LifeExpectancypointPlotClick")
                    ),
                    dataTableOutput("LifeExpectancyInfo")
                    ),

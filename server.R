@@ -52,13 +52,21 @@ function(input, output) {
   output$LifeExpectancy <- renderPlot({
     NCHS_Death_rates_and_life_expectancy_at_birth %>%
       filter(Sex == input$Sex) %>%
-      ggplot(aes(x = Race, y = NCHS_Death_rates_and_life_expectancy_at_birth$Average.Life.Expectancy..Years., colour= Sex))+
+      ggplot(aes(x = Race, y = Average.Life.Expectancy..Years., colour= Sex))+
       geom_bar(stat = "identity") +
       theme(axis.text.x = element_text(angle = 60, hjust = 1))
     
   }
   )
   
+  output$LifeExpectancypoint <- renderPlot({
+    NCHS_Death_rates_and_life_expectancy_at_birth %>%
+      filter(Sex == input$Sex, Race == input$Race) %>%
+      ggplot(aes(Year, Average.Life.Expectancy..Years., colour= Sex, shape = Race)) +
+      geom_point() +
+      theme(axis.text.x = element_text(angle = 60, hjust = 1))
+      }
+    )
 
   output$LifeExpectancyInfo <- renderDataTable({
     clickEvent<- input$LifeExpectancyPlotClick
