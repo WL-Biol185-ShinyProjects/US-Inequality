@@ -34,7 +34,7 @@ function(input, output) {
   
   output$whiteincome <- renderPlot({
     whiteonlyincome %>%
-      ggplot(aes(Year, `Mean Income 2019`)) +
+      ggplot(aes(Year, whiteonlyincome$`Mean Income 2019`)) +
       geom_point() +
       ggtitle("White Income") +
       xlab("Year") + ylab("Income") +
@@ -51,8 +51,8 @@ function(input, output) {
   
   output$LifeExpectancy <- renderPlot({
     NCHS_Death_rates_and_life_expectancy_at_birth %>%
-      filter(Race == input$Race, Sex == input$Sex) %>%
-      ggplot(aes(x = Race, y = `Average Life Expectancy (Years)`, colour= Sex))+
+      filter(Sex == input$Sex) %>%
+      ggplot(aes(x = Race, y = NCHS_Death_rates_and_life_expectancy_at_birth$Average.Life.Expectancy..Years., colour= Sex))+
       geom_bar(stat = "identity") +
       theme(axis.text.x = element_text(angle = 60, hjust = 1))
     
@@ -69,6 +69,7 @@ function(input, output) {
   
 
   # County Life Expectancy Data
+  health_ineq_online_table_11 <- read.csv("~/desktop/class-demo-project/health_ineq_online_table_11.csv")
   CountyLevelLE <- health_ineq_online_table_11
   
   output$downloadData1 <- downloadHandler(
@@ -106,7 +107,7 @@ function(input, output) {
   )
   
   # Income inequality by Race Data - Black; Census
-  
+  blackonlyincome2 <- read.csv("~/desktop/class-demo-project/blackonlyincome2.csv")
   blackonlyCensusIncomedata <- blackonlyincome2
   
   output$downloadData4 <- downloadHandler(

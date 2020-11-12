@@ -40,7 +40,7 @@ fluidPage(
                               p("- Data clean up for future researchers to be able to use readily.")
                             )
                    ),
-                   tabPanel("Life Expectancy Disparity by Race"),
+                   tabPanel("Life Expectancy Disparity by Race",
                    
                    sidebarPanel(
                      sliderInput(inputId ="Year",
@@ -63,7 +63,8 @@ fluidPage(
                      plotOutput("LifeExpectancy",
                                 click = "LifeExpectancyPlotClick")
                    ),
-                   dataTableOutput("LifeExpectancyInfo"),
+                   dataTableOutput("LifeExpectancyInfo")
+                   ),
 
                    tabPanel("Life Expectancy by Counties",
                             leafletOutput("LECountyandIncomePercentile"),
@@ -76,7 +77,7 @@ fluidPage(
                    tabPanel("Life Expectancy by Counties"),
                    
                    
-                   tabPanel("Income Disparity by Race"),
+                   tabPanel("Income Disparity by Race",
                    
                    sidebarPanel(
                      sliderInput(inputId ="Year" ,
@@ -91,6 +92,7 @@ fluidPage(
                        plotOutput("incomeplot"),
                        plotOutput("blackincome"),
                        plotOutput("whiteincome")
+                     )
                      ),
                    
                    tabPanel("Data & Acknowlegments",
