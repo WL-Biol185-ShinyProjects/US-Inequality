@@ -2,6 +2,8 @@ library(shiny)
 library(tidyverse)
 library(ggplot2)
 library(dplyr)
+library(readr)
+library(readxl)
 function(input, output) {
   
   #code for timelapse of income inequality among blacks and whites
@@ -45,12 +47,12 @@ function(input, output) {
   
   #code for life expectancy
   NCHS_Death_rates_and_life_expectancy_at_birth <- read.csv("NCHS_Death_rates_and_life_expectancy_at_birth.csv")
-  Year<- NCHS_Death_rates_and_life_expectancy_at_birth
+
   
   output$LifeExpectancy <- renderPlot({
     NCHS_Death_rates_and_life_expectancy_at_birth %>%
       filter(Race == input$Race, Sex == input$Sex) %>%
-      ggplot(aes(Race, `Average Life Expectancy (Years)`, colour= Sex))+
+      ggplot(aes(x = Race, y = `Average Life Expectancy (Years)`, colour= Sex))+
       geom_bar(stat = "identity") +
       theme(axis.text.x = element_text(angle = 60, hjust = 1))
     

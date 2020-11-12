@@ -41,13 +41,7 @@ fluidPage(
                             )
                    ),
                    tabPanel("Life Expectancy Disparity by Race"),
-
-                   tabPanel("Life Expectancy by Counties",
-                            leafletOutput("LECountyandIncomePercentile"),
-                            selectInput("CountyChoices", "Select County Dataset", choices = c("Q1", "Q2", "Q3"))
-                            ),
-
-                            titlePanel("Life Expectancy dispparities between White and Black Americans"),
+                   
                    sidebarPanel(
                      sliderInput(inputId ="Year",
                                  label = "Year",
@@ -61,13 +55,7 @@ fluidPage(
                                  label = "Select Sex",
                                  multiple = TRUE,
                                  choices = unique(NCHS_Death_rates_and_life_expectancy_at_birth$Sex),
-                                 selected = "Both Sexes"),
-                     
-                     selectInput(inputId = "Race",
-                                 label = "Select Race",
-                                 multiple = TRUE,
-                                 choices = unique(NCHS_Death_rates_and_life_expectancy_at_birth$Race),
-                                 selected = "All Races")
+                                 selected = "Both Sexes")
                      
                      
                    ),
@@ -76,6 +64,13 @@ fluidPage(
                                 click = "LifeExpectancyPlotClick")
                    ),
                    dataTableOutput("LifeExpectancyInfo"),
+
+                   tabPanel("Life Expectancy by Counties",
+                            leafletOutput("LECountyandIncomePercentile"),
+                            selectInput("CountyChoices", "Select County Dataset", choices = c("Q1", "Q2", "Q3"))
+                            ),
+
+                            titlePanel("Life Expectancy dispparities between White and Black Americans"),
                    
                    
                    tabPanel("Life Expectancy by Counties"),
