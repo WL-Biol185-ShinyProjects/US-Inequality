@@ -4,6 +4,7 @@ library(ggplot2)
 library(dplyr)
 library(readr)
 library(readxl)
+library(leaflet)
 
 function(input, output) {
   
@@ -13,7 +14,7 @@ function(input, output) {
    output$LECountyandIncomePercentile <- renderLeaflet(
     {
     
-    if (input$CountyChoices == "C1") {
+    if (input$CountyChoices == "Q1") {
       # code to make map #1
       geo <- readOGR("counties.json")
       
@@ -35,7 +36,7 @@ function(input, output) {
         )
       
     } 
-    else if (input$CountyChoices == "C2") {
+    else if (input$CountyChoices == "Q2") {
       #code to make map 2
       geo <- readOGR("counties.json")
       
