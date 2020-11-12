@@ -6,6 +6,9 @@ library(readr)
 library(readxl)
 library(leaflet)
 
+library(rgdal)
+
+
 function(input, output) {
   
   # ui.r leafletOut("changeableCloropleth")

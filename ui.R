@@ -10,7 +10,9 @@ library(shinyWidgets)
 
 library(leaflet)
 
- #code is not looking hot. it's flatlining.
+library(rgdal)
+
+
 
 fluidPage(
   setBackgroundColor (
@@ -24,22 +26,23 @@ fluidPage(
                    tabPanel("Home", 
                             titlePanel("Income & Health Inequality in America"),
                             mainPanel(
-                              h1("The Why Behind the Project"),
-                              p("The year 2020 has certaintly not been an easy one for the United States overall.", 
-                                ("It has also shown many issues that as a nation we have tried to sweep under the rug,"), 
-                                "such as income disparity and health outcomes of certain communities."),
+                              h1("Behind the Project"),
+                              p("Systematic inequality has been an overlooked undercurent for much of U.S. History.", 
+                                ("America's structurual racism has created and upheld many of the racial gaps,"), 
+                                "such as the wealth gap and the life expectancy disparity."),
+                                ("Despite the overwelming evidence to prove such phenomena exists, many still deny it."),
                               br(),
                               p("For these reasons we decided to look at income disparity between whites and blacks over time in the U.S.
-        as well as life expectancy in U.S. counties as of 2017. If this topic interests you, further reasearch can be done here.",
+        as well as life expectancy in U.S. counties as of 2017 to show how such disparities have changed and still remain. If this topic interests you, further reasearch can be done here.",
                                 a("Pew Research Center.", 
                                   href = "https://www.pewsocialtrends.org/2016/06/27/1-demographic-trends-and-economic-well-being/")),
                               br(),
-                              h1("Few of the Things to be Shown"),
-                              p("- Life Expectancy between whites and blacks in the United States over time."),
-                              p("- Economic disparity over time between whites and blacks in the United States." 
+                              h1(""),
+                              p(""),
+                              p("" 
                               ),
-                              p("- Life Expectancy by counties in the United States."),
-                              p("- Data clean up for future researchers to be able to use readily.")
+                              p(""),
+                              p("")
                             )
                    ),
                    tabPanel("Life Expectancy Disparity by Race",
@@ -79,8 +82,6 @@ fluidPage(
                             leafletOutput("LECountyandIncomePercentile"),
                             selectInput("CountyChoices", "Select County Dataset", choices = c("Q1", "Q2", "Q3", "Q4"))
                             ),
-
-                  tabPanel("Life Expectancy dispparities between White and Black Americans"),
              
                    tabPanel("Income Disparity by Race",
                    sidebarPanel(
@@ -98,6 +99,7 @@ fluidPage(
                        plotOutput("whiteincome")
                      )
                      ),
+                   
                    
                    tabPanel("Data & Acknowlegments",
                             h2("Acknowledgments"),
