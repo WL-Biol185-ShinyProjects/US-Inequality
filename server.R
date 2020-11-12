@@ -4,6 +4,7 @@ library(ggplot2)
 library(dplyr)
 library(readr)
 library(readxl)
+
 function(input, output) {
   
   #code for timelapse of income inequality among blacks and whites
@@ -38,7 +39,10 @@ function(input, output) {
       geom_point() +
       ggtitle("White Income") +
       xlab("Year") + ylab("Income") +
-      theme(axis.text.x = element_text(angle = 60, hjust = 1))
+      theme(axis.text.x = element_text(angle = 60, hjust = 1)) 
+      
+      
+    
   })
   
   
@@ -69,7 +73,7 @@ function(input, output) {
     )
 
   output$LifeExpectancyInfo <- renderDataTable({
-    clickEvent<- input$LifeExpectancyPlotClick
+    clickEvent<- input$LifeExpectancypointPlotClick
     NCHS_Death_rates_and_life_expectancy_at_birth %>%
       nearPoints(clickEvent)
   }
