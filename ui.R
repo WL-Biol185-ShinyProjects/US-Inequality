@@ -82,9 +82,6 @@ fluidPage(
                             leafletOutput("LECountyandIncomePercentile"),
                             selectInput("CountyChoices", "Select County Dataset", choices = c("Q1", "Q2", "Q3", "Q4"))
                             ),
-
-
-                  tabPanel("Life Expectancy dispparities between White and Black Americans"),
              
                    tabPanel("Income Disparity by Race",
                    sidebarPanel(
