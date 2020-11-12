@@ -111,7 +111,7 @@ function(input, output) {
   
   output$whiteincome <- renderPlot({
     whiteonlyincome %>%
-      ggplot(aes(Year, whiteonlyincome$`Mean Income 2019`)) +
+      ggplot(aes(Year, `Mean Income 2019`)) +
       geom_point() +
       ggtitle("White Income") +
       xlab("Year") + ylab("Income") +
