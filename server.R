@@ -18,7 +18,7 @@ function(input, output) {
    output$LECountyandIncomePercentile <- renderLeaflet(
     {
     
-    if (input$CountyChoices == "Q1") {
+    if (input$CountyChoices == "Q1-M") {
       # code to make map #1
       geo <- readOGR("counties.json")
       
@@ -40,7 +40,7 @@ function(input, output) {
         )
       
     } 
-    else if (input$CountyChoices == "Q2") {
+    else if (input$CountyChoices == "Q2-M") {
       #code to make map 2
       geo <- readOGR("counties.json")
       
@@ -62,7 +62,7 @@ function(input, output) {
         )
       
     } 
-    else if (input$CountyChoices == "Q3") {
+    else if (input$CountyChoices == "Q3-M") {
       #code to make map 3
       geo <- readOGR("counties.json")
       

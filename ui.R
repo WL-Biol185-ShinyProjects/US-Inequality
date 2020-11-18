@@ -85,7 +85,9 @@ fluidPage(
 
                    tabPanel("Life Expectancy by Counties",
                             leafletOutput("LECountyandIncomePercentile"),
-                            selectInput("CountyChoices", "Select County Dataset", choices = c("Q1", "Q2", "Q3", "Q4"))
+                            selectInput("CountyChoices", "Select County Dataset", choices = c("Q1-M", "Q2-M", "Q3-M", "Q4-M")),
+                            p("What is being mapped is Life Expectancy in U.S counties based on income quartiles (I believe the authors mean quintiles, yet that
+                              was on their data key). Taking this into perspective with the visualization, the map should be interpreted as this, 'If I am in Q1 (lowest quintile) this is my life expectancy in said county. The same should go for the other income quartiles listed (Q2, Q3, Q4).")
                             ),
              
                    tabPanel("Income Disparity",
