@@ -8,6 +8,7 @@ library(leaflet)
 library(rgdal)
 library(readxl)
 
+#checking of this works
 
 function(input, output) {
   
@@ -155,7 +156,7 @@ function(input, output) {
   output$LifeExpectancy <- renderPlot({
     RaceLE_NCHSdata %>%
       filter(Year == input$Years) %>%
-      ggplot(aes(x = Race, y = Average.Life.Expectancy..Years., fill = Sex))+
+      ggplot(aes(x = Race, y = `Average Life Expectancy (Years)`, fill = Sex))+
       geom_bar(stat = "identity") +
       theme(axis.text.x = element_text(angle = 60, hjust = 1))
     
@@ -165,7 +166,7 @@ function(input, output) {
   output$LifeExpectancypoint <- renderPlot({
     RaceLE_NCHSdata %>%
       filter(Sex == input$Sex, Race == input$Race) %>%
-      ggplot(aes(Year, Average.Life.Expectancy..Years., colour= Sex, shape = Race)) +
+      ggplot(aes(Year, `Average Life Expectancy (Years)`, colour= Sex, shape = Race)) +
       geom_point() +
       theme(axis.text.x = element_text(angle = 60, hjust = 1))
       }
