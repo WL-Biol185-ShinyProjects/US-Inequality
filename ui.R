@@ -1,12 +1,20 @@
 library(shiny)
-library(shinyWidgets)
-library(tidyverse)
-library(ggplot2)
-library(leaflet)
-library(rgdal)
-library(readxl)
 
-RaceLE_NCHSdata <- read_csv("NCHS_Death_rates_and_life_expectancy_at_birth.csv")
+library(shinyWidgets)
+
+library(tidyverse)
+        
+library(ggplot2)
+
+library(shinyWidgets)
+
+library(leaflet)
+
+library(rgdal)
+
+library(shinydashboard)
+
+RaceLE_NCHSdata<-read.csv("NCHS_Death_rates_and_life_expectancy_at_birth.csv")
 blackonlyincome <- read_excel("blackonlyincome.xlsx")
 whiteonlyincome <- read_excel("whiteonlyincome.xlsx")
 combined_income <- read_excel("combined income.xlsx")
@@ -82,7 +90,7 @@ fluidPage(
                               was on their data key). Taking this into perspective with the visualization, the map should be interpreted as this, 'If I am in Q1 (lowest quintile) this is my life expectancy in said county. The same should go for the other income quartiles listed (Q2, Q3, Q4).")
                             ),
              
-                   tabPanel("Income Disparity by Race",
+                   tabPanel("Income Disparity",
                    sidebarPanel(
                      sliderInput(inputId ="Year" ,
                                  label = "Year" ,
@@ -98,7 +106,6 @@ fluidPage(
                        plotOutput("whiteincome")
                      )
                      )),
-                   
                    
                    tabPanel("Data & Acknowlegments",
                             h2("Acknowledgments"),
