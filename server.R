@@ -149,13 +149,12 @@ function(input, output) {
   )
   
   #code for life expectancy
-  NCHS_Death_rates_and_life_expectancy_at_birth <- read.csv("NCHS_Death_rates_and_life_expectancy_at_birth.csv")
-
+  RaceLE_NCHSdata <- read_csv("NCHS_Death_rates_and_life_expectancy_at_birth.csv")
   
   output$LifeExpectancy <- renderPlot({
-    NCHS_Death_rates_and_life_expectancy_at_birth %>%
-      filter(Sex == input$Sex) %>%
-      ggplot(aes(x = Race, y = Average.Life.Expectancy..Years., colour= Sex))+
+    RaceLE_NCHSdata %>%
+      filter(Year == input$Years) %>%
+      ggplot(aes(x = Race, y = Average.Life.Expectancy..Years., fill = Sex))+
       geom_bar(stat = "identity") +
       theme(axis.text.x = element_text(angle = 60, hjust = 1))
     
@@ -163,7 +162,7 @@ function(input, output) {
   )
   
   output$LifeExpectancypoint <- renderPlot({
-    NCHS_Death_rates_and_life_expectancy_at_birth %>%
+    RaceLE_NCHSdata %>%
       filter(Sex == input$Sex, Race == input$Race) %>%
       ggplot(aes(Year, Average.Life.Expectancy..Years., colour= Sex, shape = Race)) +
       geom_point() +
@@ -173,7 +172,7 @@ function(input, output) {
 
   output$LifeExpectancyInfo <- renderDataTable({
     clickEvent<- input$LifeExpectancypointPlotClick
-    NCHS_Death_rates_and_life_expectancy_at_birth %>%
+    RaceLE_NCHSdata %>%
       nearPoints(clickEvent)
   }
   )
@@ -193,7 +192,7 @@ function(input, output) {
   )
   
   # Life Expectancy at Birth by Race Data; NCHS
-  RaceLE_NCHSdata <- NCHS_Death_rates_and_life_expectancy_at_birth
+  RaceLE_NCHSdata <- read_csv("NCHS_Death_rates_and_life_expectancy_at_birth.csv")
   
   output$downloadData2 <- downloadHandler(
     filename = function() {

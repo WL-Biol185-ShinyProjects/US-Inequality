@@ -5,7 +5,10 @@ library(ggplot2)
 library(leaflet)
 library(rgdal)
 
-
+RaceLE_NCHSdata <- read_csv("NCHS_Death_rates_and_life_expectancy_at_birth.csv")
+blackonlyincome <- read_excel("blackonlyincome.xlsx")
+whiteonlyincome <- read_excel("whiteonlyincome.xlsx")
+combined_income <- read_excel("combined income.xlsx")
 
 fluidPage(
   setBackgroundColor (
@@ -41,24 +44,24 @@ fluidPage(
                    tabPanel("Life Expectancy Disparity by Race",
                    
                    sidebarPanel(
-                     sliderInput(inputId ="Year",
+                     sliderInput(inputId ="Years",
                                  label = "Year",
                                  min = 1900,
                                  max = 2019,
-                                 value = 1950,
+                                 value = 1900,
                                  animate = animationOptions(interval = 1000, loop = FALSE)
                      ),
                      
                      selectInput(inputId = "Sex",
                                  label = "Select Sex",
                                  multiple = TRUE,
-                                 choices = unique(NCHS_Death_rates_and_life_expectancy_at_birth$Sex),
+                                 choices = unique(RaceLE_NCHSdata$Sex),
                                  selected = "Both Sexes"),
                      
                      selectInput(inputId = "Race",
                                  label = "Select Race",
                                  multiple = TRUE,
-                                 choices = unique(NCHS_Death_rates_and_life_expectancy_at_birth$Race),
+                                 choices = unique(RaceLE_NCHSdata$Race),
                                  selected = "All Races")
                      
                      
@@ -91,7 +94,7 @@ fluidPage(
                        plotOutput("blackincome"),
                        plotOutput("whiteincome")
                      )
-                     ),
+                     )),
                    
                    
                    tabPanel("Data & Acknowlegments",
@@ -138,5 +141,4 @@ fluidPage(
                             ) 
                    )
   )
-)
 )
