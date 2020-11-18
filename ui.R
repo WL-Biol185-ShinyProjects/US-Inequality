@@ -14,6 +14,8 @@ library(rgdal)
 
 library(shinydashboard)
 
+library(readxl)
+
 RaceLE_NCHSdata<-read.csv("NCHS_Death_rates_and_life_expectancy_at_birth.csv")
 blackonlyincome <- read_excel("blackonlyincome.xlsx")
 whiteonlyincome <- read_excel("whiteonlyincome.xlsx")
