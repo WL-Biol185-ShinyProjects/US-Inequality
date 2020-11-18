@@ -6,6 +6,7 @@ library(readr)
 library(readxl)
 library(leaflet)
 library(rgdal)
+library(readxl)
 
 
 function(input, output) {
@@ -110,8 +111,8 @@ function(input, output) {
   )
   
   #code for timelapse of income inequality among blacks and whites
-  blackonlyincome <- read_excel("blackonlyincome.xlsx")
-  whiteonlyincome <- read_excel("whiteonlyincome.xlsx")
+   blackonlyincome <- read_excel("blackonlyincome.xlsx")
+   whiteonlyincome <- read_excel("whiteonlyincome.xlsx")
   combined_income <- read_excel("combined income.xlsx")
   
   output$incomeplot <- renderPlot({

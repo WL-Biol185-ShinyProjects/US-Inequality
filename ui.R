@@ -4,6 +4,7 @@ library(tidyverse)
 library(ggplot2)
 library(leaflet)
 library(rgdal)
+library(readxl)
 
 RaceLE_NCHSdata <- read_csv("NCHS_Death_rates_and_life_expectancy_at_birth.csv")
 blackonlyincome <- read_excel("blackonlyincome.xlsx")
