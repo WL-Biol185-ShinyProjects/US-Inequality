@@ -113,9 +113,9 @@ fluidPage(
                as a class project. Future projects could show the inequality between whites and other races/ethnicities in America,
                such as Hispanics and Asians,  or compare other areas of inequality."),
                             br(),
-                            p("The data for this project was not as easy to collect as we originally thought. The data was also not as clean
-               as it could have been, expecially datasets from the Census. As a result, we decided to clean the data as best as possible
-               and post it here so that future studies may be able to have the data readily available. These datasets will become available "),
+                            p("The data used in this project came form the CDC, the Census, and other publicly available domains. So that future studies may have the data readily available,
+               we have decided to post post all data that was used for download below. We hope that more research into the issues of systemic inequalties will be done in the future to highlight
+                              the severity of said issues and what can be done to mitigate it. "),
                             h4("Download County-level Life Expectancy Data"),
                             downloadBttn(
                               outputId = "downloadData1",
