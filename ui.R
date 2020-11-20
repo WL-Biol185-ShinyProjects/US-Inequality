@@ -99,15 +99,16 @@ fluidPage(
                                  min = 1980 ,
                                  max = 2019,
                                  value = 1980,
-                                 animate = animationOptions(interval = 1000, loop = FALSE)),
-                     
-                     
+                                 animate = animationOptions(interval = 1000, loop = FALSE)
+                     )
+                                 
+                      ),
                      mainPanel(
                        plotOutput("incomeplot"),
                        plotOutput("blackincome"),
                        plotOutput("whiteincome")
                      )
-                     )),
+                     ),
                    
                    tabPanel("Data & Acknowlegments",
                             h2("Acknowledgments"),
