@@ -1,19 +1,11 @@
 library(shiny)
-
 library(shinyWidgets)
-
 library(tidyverse)
-        
 library(ggplot2)
-
 library(shinyWidgets)
-
 library(leaflet)
-
 library(rgdal)
-
 library(shinydashboard)
-
 library(readxl)
 
 RaceLE_NCHSdata<-read.csv("NCHS_Death_rates_and_life_expectancy_at_birth.csv")
